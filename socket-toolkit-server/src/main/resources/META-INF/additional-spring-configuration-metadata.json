@@ -1,0 +1,177 @@
+{
+  "groups": [
+    {
+      "name": "org.skycode.socket.jt808",
+      "sourceType": "org.skycode.socket.configure.JT808NettyProperties",
+      "type": "org.skycode.socket.configure.JT808NettyProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "org.skycode.socket.jt808.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "jt808 netty server enable.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "org.skycode.socket.jt808.name",
+      "type": "java.lang.String",
+      "sourceType": "java.lang.String",
+      "description": "jt808 netty server name.",
+      "defaultValue":  "jt808-netty-server"
+    },
+    {
+      "name": "org.skycode.socket.jt808.port",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server port.",
+      "defaultValue":  "9999"
+    },
+    {
+      "name": "org.skycode.socket.jt808.protocol",
+      "type": "java.lang.String",
+      "sourceType": "java.lang.String",
+      "description": "jt808 netty server protocol.",
+      "defaultValue":  "tcp"
+    },
+    {
+      "name": "org.skycode.socket.jt808.auth",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "jt808 netty server auth.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "org.skycode.socket.jt808.auth-message-ids",
+      "type": "java.lang.String[]",
+      "sourceType": "java.lang.String[]",
+      "description": "jt808 netty server auth message ids.",
+      "defaultValue":  "0100,0102"
+    },
+    {
+      "name": "org.skycode.socket.jt808.master-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server master size.",
+      "defaultValue":  "1"
+    },
+    {
+      "name": "org.skycode.socket.jt808.slave-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server slave size.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "org.skycode.socket.jt808.rsa-max-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server rsa max size.",
+      "defaultValue":  "117"
+    },
+    {
+      "name": "org.skycode.socket.jt808.read-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server read timeout.",
+      "defaultValue":  "15"
+    },
+    {
+      "name": "org.skycode.socket.jt808.backlog",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server backlog.",
+      "defaultValue":  "128"
+    },
+    {
+      "name": "org.skycode.socket.jt808.tcp-no-delay",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "jt808 netty server tcp no delay.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "org.skycode.socket.jt808.keepalive",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "jt808 netty server keepalive.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "org.skycode.socket.jt808.thread-core-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server thread core pool size.",
+      "defaultValue":  "1"
+    },
+    {
+      "name": "org.skycode.socket.jt808.thread-max-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server max thread pool size.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "org.skycode.socket.jt808.thread-keepalive-time",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "jt808 netty server thread keepalive time.",
+      "defaultValue":  "1000"
+    }
+  ],
+  "hints": [
+    {
+      "name": "org.skycode.socket.jt808.enabled",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 netty server enabled false."
+        },
+        {
+          "value": true,
+          "description": "jt808 netty server enabled true."
+        }
+      ]
+    },
+    {
+      "name": "org.skycode.socket.jt808.auth",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 netty server auth false."
+        },
+        {
+          "value": true,
+          "description": "jt808 netty server auth true."
+        }
+      ]
+    },
+    {
+      "name": "org.skycode.socket.jt808.tcp-no-delay",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 netty server tcp no delay false."
+        },
+        {
+          "value": true,
+          "description": "jt808 netty server tcp no delay true."
+        }
+      ]
+    },
+    {
+      "name": "org.skycode.socket.jt808.keepalive",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 netty server keepalive false."
+        },
+        {
+          "value": true,
+          "description": "jt808 netty server keepalive true."
+        }
+      ]
+    }
+  ]
+}
