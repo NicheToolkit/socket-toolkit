@@ -9,13 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */
-public class NettyThreadFactory implements ThreadFactory {
+public class ServerThreadFactory implements ThreadFactory {
     private static final AtomicInteger POOL_SEQUENCE = new AtomicInteger(1);
     private static final AtomicInteger THREAD_SEQUENCE = new AtomicInteger(1);
     private final ThreadGroup group;
     private final String prefix;
 
-    public NettyThreadFactory(String prefix) {
+    public ServerThreadFactory(String prefix) {
         SecurityManager securityManager = System.getSecurityManager();
         this.group = (securityManager != null) ? securityManager.getThreadGroup() : Thread.currentThread().getThreadGroup();
         this.prefix = prefix + "-" + POOL_SEQUENCE.getAndIncrement() + "-";

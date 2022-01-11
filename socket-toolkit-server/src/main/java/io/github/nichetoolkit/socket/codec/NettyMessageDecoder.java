@@ -17,12 +17,12 @@ import java.util.List;
  * @version v1.0.0
  */
 @Slf4j
-public class NettyMessageDecoder  extends MessageToMessageDecoder<ByteBuf> {
+public class NettyMessageDecoder extends MessageToMessageDecoder<ByteBuf> {
     private static final AttributeKey<ByteBuf> BUFFER_CACHE = AttributeKey.valueOf(SocketServerConstants.BUFFER);
 
-    private NettyMessageCoder messageCoder;
+    private MessageCoder messageCoder;
 
-    public NettyMessageDecoder(NettyMessageCoder messageCoder) {
+    public NettyMessageDecoder(MessageCoder messageCoder) {
         this.messageCoder = messageCoder;
     }
 
@@ -91,7 +91,7 @@ public class NettyMessageDecoder  extends MessageToMessageDecoder<ByteBuf> {
     }
 
     public boolean doDecode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) {
-         NettyBufferCache bufferWrapper = new NettyBufferCache(ctx, msg, out);
-        return messageCoder.decode(bufferWrapper);
+         NettyBufferCache bufferCache = new NettyBufferCache(ctx, msg, out);
+        return messageCoder.decode(bufferCache);
     }
 }

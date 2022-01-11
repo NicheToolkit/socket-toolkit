@@ -10,17 +10,16 @@ import java.util.List;
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */
-public class NettyBufferCache {
+public class NettyBufferCache implements BufferCache{
     private ChannelHandlerContext ctx;
     private ByteBuf message;
-    private List<Object> nettyOut;
+    private List<Object> output;
 
-    public NettyBufferCache(ChannelHandlerContext ctx, ByteBuf message, List<Object> out) {
+    public NettyBufferCache(ChannelHandlerContext ctx, ByteBuf message, List<Object> output) {
         this.ctx = ctx;
         this.message = message;
-        this.nettyOut = out;
+        this.output = output;
     }
-
 
     public ChannelHandlerContext getCtx() {
         return ctx;
@@ -38,40 +37,46 @@ public class NettyBufferCache {
         this.message = message;
     }
 
-    public List<Object> getNettyOut() {
-        return nettyOut;
+    public List<Object> getOutput() {
+        return output;
     }
 
-    public void setNettyOut(List<Object> nettyOut) {
-        this.nettyOut = nettyOut;
+    public void setOutput(List<Object> output) {
+        this.output = output;
     }
 
+    @Override
     public int remaining() {
         return message.readableBytes();
     }
 
+    @Override
     public void mark() {
         message.markReaderIndex();
     }
 
-    public byte get() {
+    @Override
+    public byte read() {
         return message.readByte();
     }
 
+    @Override
     public void reset() {
         message.resetReaderIndex();
     }
 
-    public void get(byte[] buf) {
-        message.readBytes(buf);
+    @Override
+    public void read(byte[] buffer) {
+        message.readBytes(buffer);
     }
 
-    public String getRemoteAddress() {
+    @Override
+    public String address() {
         return ctx.channel().remoteAddress().toString();
     }
 
-    public void write(byte[] buf) {
-        nettyOut.add(buf);
-
+    @Override
+    public void write(byte[] buffer) {
+        output.add(buffer);
     }
 }

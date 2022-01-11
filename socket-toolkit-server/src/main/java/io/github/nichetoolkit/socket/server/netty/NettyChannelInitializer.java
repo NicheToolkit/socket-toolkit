@@ -1,11 +1,10 @@
-package io.github.nichetoolkit.socket.server;
+package io.github.nichetoolkit.socket.server.netty;
 
 import io.github.nichetoolkit.rest.util.common.GeneralUtils;
 import io.github.nichetoolkit.socket.codec.NettyMessageDecoder;
 import io.github.nichetoolkit.socket.codec.NettyMessageEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import org.springframework.context.ApplicationContext;
 
 /**
  * <p>NettyChannelInitializer</p>
@@ -17,10 +16,10 @@ public class NettyChannelInitializer extends ChannelInitializer<SocketChannel> {
     private NettyMessageEncoder messageEncoder;
     private NettyServerHandler serverHandler;
 
-    public NettyChannelInitializer(ApplicationContext applicationContext) {
-        this.messageDecoder = applicationContext.getBean(NettyMessageDecoder.class);
-        this.messageEncoder = applicationContext.getBean(NettyMessageEncoder.class);
-        this.serverHandler = applicationContext.getBean(NettyServerHandler.class);
+    public NettyChannelInitializer(NettyMessageDecoder messageDecoder, NettyMessageEncoder messageEncoder) {
+        this.messageDecoder = messageDecoder;
+        this.messageEncoder = messageEncoder;
+        this.serverHandler = new NettyServerHandler() {};
     }
 
     public NettyChannelInitializer(NettyMessageDecoder messageDecoder, NettyMessageEncoder messageEncoder, NettyServerHandler serverHandler) {

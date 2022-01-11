@@ -1,21 +1,20 @@
-package io.github.nichetoolkit.socket.server;
+package io.github.nichetoolkit.socket.server.netty;
 
-import io.github.nichetoolkit.rest.util.common.GeneralUtils;
 import io.github.nichetoolkit.socket.configure.SocketServerProperties;
 import io.github.nichetoolkit.socket.constant.SocketServerConstants;
+import io.github.nichetoolkit.socket.server.SocketServer;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioDatagramChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.ResourceLeakDetector;
 import io.netty.util.concurrent.Future;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.lang.NonNull;
 
 /**
  * <p>SocketNettyServer</p>
@@ -23,8 +22,7 @@ import org.springframework.lang.NonNull;
  * @version v1.0.0
  */
 @Slf4j
-public class DefaultNettyServer implements ApplicationContextAware, SocketServer {
-    private static ApplicationContext applicationContext;
+public class DefaultNettyServer implements SocketServer {
     private volatile boolean isRunning = false;
     private static Channel serverChannel;
     private static EventLoopGroup masterGroup;
@@ -34,19 +32,11 @@ public class DefaultNettyServer implements ApplicationContextAware, SocketServer
     private Integer port;
     private NettyChannelInitializer channelInitializer;
 
-    public DefaultNettyServer(SocketServerProperties properties) {
+    public DefaultNettyServer(SocketServerProperties properties, NettyChannelInitializer channelInitializer) {
         this.properties = properties;
         this.name = properties.getName();
         this.port = properties.getPort();
-        this.channelInitializer = applicationContext.getBean(NettyChannelInitializer.class);
-        if (GeneralUtils.isEmpty(this.channelInitializer)) {
-            this.channelInitializer = new NettyChannelInitializer(applicationContext){};
-        }
-    }
-
-    @Override
-    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
-        DefaultNettyServer.applicationContext = applicationContext;
+        this.channelInitializer = channelInitializer;
     }
 
     @Override
@@ -57,10 +47,10 @@ public class DefaultNettyServer implements ApplicationContextAware, SocketServer
             }
             String protocol = properties.getProtocol();
             boolean isTCP = SocketServerConstants.TCP.equals(protocol);
-            masterGroup = new NioEventLoopGroup(properties.getMasterSize());
+            masterGroup = new NioEventLoopGroup(properties.getNettyConfig().getMasterSize());
             ChannelFuture channelFuture;
             if (isTCP) {
-                slaveGroup = new NioEventLoopGroup(properties.getSlaveSize());
+                slaveGroup = new NioEventLoopGroup(properties.getNettyConfig().getSlaveSize());
                 ServerBootstrap serverBootstrap = new ServerBootstrap();
                 serverBootstrap.group(masterGroup, slaveGroup)
                         .channel(NioServerSocketChannel.class)
@@ -83,6 +73,7 @@ public class DefaultNettyServer implements ApplicationContextAware, SocketServer
             serverChannel = channelFuture.channel();
             log.info("Server has started successful!, name: {}, port: {}", name, port);
             channelFuture.channel().closeFuture().sync();
+            isRunning = true;
         } catch (InterruptedException exception) {
             log.error("Server has started with error!, error: {}", exception.getMessage());
         } finally {

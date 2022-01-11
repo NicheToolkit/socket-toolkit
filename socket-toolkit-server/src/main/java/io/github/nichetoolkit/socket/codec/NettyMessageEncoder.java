@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class NettyMessageEncoder extends MessageToMessageEncoder<byte[]> {
 
-    private NettyMessageCoder messageCoder;
+    private MessageCoder messageCoder;
 
-    public NettyMessageEncoder(NettyMessageCoder messageCoder) {
+    public NettyMessageEncoder(MessageCoder messageCoder) {
         this.messageCoder = messageCoder;
     }
 

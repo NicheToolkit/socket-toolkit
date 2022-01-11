@@ -5,11 +5,11 @@
     <parent>
         <groupId>io.github.nichetoolkit</groupId>
         <artifactId>socket-toolkit-parent</artifactId>
-        <version>1.0.2</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>socket-toolkit-test-web</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>socket-toolkit-test-web</name>
     <packaging>jar</packaging>
     <description>Socket toolkit test web project for Spring Boot</description>
@@ -25,8 +25,8 @@
 
         <dependency>
             <groupId>io.github.nichetoolkit</groupId>
-            <artifactId>rest-toolkit-starter</artifactId>
-            <version>${toolkit.version}</version>
+            <artifactId>socket-toolkit-server</artifactId>
+            <version>1.0.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
