@@ -4,24 +4,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.nichetoolkit</groupId>
-        <artifactId>rest-toolkit-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <artifactId>socket-toolkit-parent</artifactId>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>socket-toolkit-parent</artifactId>
+    <artifactId>socket-toolkit-modbus-starter</artifactId>
     <version>1.0.2-SNAPSHOT</version>
+    <name>socket-toolkit-modbus-starter</name>
+    <packaging>jar</packaging>
+    <description>socket toolkit modbus starter project for Spring Boot</description>
+    <url>https://github.com/NicheToolkit/socket-toolkit/tree/master/socket-toolkit-modbus-starter</url>
 
-    <modules>
-        <module>socket-toolkit-server-starter</module>
-        <module>socket-toolkit-jt808-starter</module>
-        <module>socket-toolkit-modbus-starter</module>
-        <module>socket-toolkit-test-web</module>
-    </modules>
-
-    <name>socket-toolkit</name>
-    <packaging>pom</packaging>
-    <description>Socket toolkit project for Spring Boot</description>
-    <url>https://github.com/NicheToolkit/socket-toolkit</url>
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
 
     <licenses>
         <license>
@@ -54,18 +52,21 @@
         </repository>
     </distributionManagement>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <netty.version>4.1.72.Final</netty.version>
-        <mina.version>2.1.5</mina.version>
-        <socket.version>1.0.2-SNAPSHOT</socket.version>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.nichetoolkit</groupId>
+            <artifactId>socket-toolkit-server-starter</artifactId>
+            <version>${socket.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
         <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
             <resource>
                 <directory>src/main/java</directory>
                 <includes>
@@ -151,10 +152,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>8</source>
+                    <target>8</target>
                     <encoding>utf-8</encoding>
                 </configuration>
             </plugin>

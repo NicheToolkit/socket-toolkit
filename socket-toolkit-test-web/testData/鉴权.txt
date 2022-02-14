@@ -1,0 +1,5 @@
+    2021-11-17 15:33:36.630  INFO 14690 --- [ntLoopGroup-3-1] o.s.socket.codec.JT808NettyDecoder       :  ip: /223.104.107.235:1400, hex: 7e010200120210499950230c563733363837353631364536373737363536398b7e
+    2021-11-17 15:33:36.631  INFO 14690 --- [ntLoopGroup-3-1] o.s.socket.server.JT808ServerHandler     : message: {"messageId":258,"messageHex":"0102","messageBodyProps":"0012","protocolVersion":null,"phone":"021049995023","flowId":3158,"packageSize":null,"packageIndex":null,"version2019":false,"slicePackage":false}
+    2021-11-17 15:33:36.631  INFO 14690 --- [ntLoopGroup-3-1] o.skycode.socket.jt808.JT0x0102Handler   : [JT0x0102] 0102 [终端鉴权] terminal authentication
+    2021-11-17 15:33:36.631  INFO 14690 --- [ntLoopGroup-3-1] o.skycode.socket.jt808.JT0x0102Handler   : [JT0x0102] 0102 [终端鉴权] <<<<<<<<鉴权成功!!!
+    2021-11-17 15:33:36.631  INFO 14690 --- [ad-pool-db-1-10] o.s.s.service.impl.DefaultDataService    : phone: 021049995023, terminal auth: 736875616E67776569 ageId":258,"messageHex":"0102","messageBodyProps":"0012","protocolVersion":null,"phone":"021049995023","flowId":3158,"packageSize":null,"packageIndex":null,"version2019":false,"slicePackage":false}

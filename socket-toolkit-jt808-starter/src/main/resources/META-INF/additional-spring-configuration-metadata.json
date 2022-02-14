@@ -1,0 +1,75 @@
+{
+  "groups": [
+    {
+      "name": "nichetoolkit.socket.jt808",
+      "sourceType": "io.github.nichetoolkit.socket.configure.SocketJt808Properties",
+      "type": "io.github.nichetoolkit.socket.configure.SocketJt808Properties"
+    }
+  ],
+  "properties": [
+
+    {
+      "name": "nichetoolkit.socket.jt808.auth",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "jt808 server auth.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "nichetoolkit.socket.jt808.auth-ids",
+      "type": "java.lang.String[]",
+      "sourceType": "java.lang.String[]",
+      "description": "jt808 ignored auth ids.",
+      "defaultValue":  "0100,0102"
+    },
+    {
+      "name": "nichetoolkit.socket.jt808.use-constant-auth",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "use constant auth.",
+      "defaultValue":  "false"
+    },
+    {
+      "name": "nichetoolkit.socket.jt808.random-auth-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "random auth size.",
+      "defaultValue":  "18"
+    },
+    {
+      "name": "nichetoolkit.socket.jt808.constant-auth",
+      "type": "java.lang.String",
+      "sourceType": "java.lang.String",
+      "description": "constant auth code.",
+      "defaultValue":  "736875616E67776569"
+    }
+  ],
+  "hints": [
+    {
+      "name": "nichetoolkit.socket.jt808.auth",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 server auth false."
+        },
+        {
+          "value": true,
+          "description": "jt808 server auth true."
+        }
+      ]
+    },
+    {
+      "name": "nichetoolkit.socket.jt808.use-constant-auth",
+      "values": [
+        {
+          "value": false,
+          "description": "jt808 server auth false."
+        },
+        {
+          "value": true,
+          "description": "jt808 server auth true."
+        }
+      ]
+    }
+  ]
+}

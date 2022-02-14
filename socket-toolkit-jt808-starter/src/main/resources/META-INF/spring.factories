@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.github.nichetoolkit.socket.configure.SocketJt808AutoConfigure

@@ -1,0 +1,213 @@
+{
+  "groups": [
+    {
+      "name": "nichetoolkit.socket.server",
+      "sourceType": "io.github.nichetoolkit.socket.configure.SocketServerProperties",
+      "type": "io.github.nichetoolkit.socket.configure.SocketServerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "nichetoolkit.socket.server.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "socket server enable.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "nichetoolkit.socket.server.name",
+      "type": "java.lang.String",
+      "sourceType": "java.lang.String",
+      "description": "socket server name.",
+      "defaultValue":  "socket-server"
+    },
+    {
+      "name": "nichetoolkit.socket.server.port",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server port.",
+      "defaultValue":  "9999"
+    },
+    {
+      "name": "nichetoolkit.socket.server.server-type",
+      "type": "io.github.nichetoolkit.socket.enums.ServerType",
+      "sourceType": "io.github.nichetoolkit.socket.enums.ServerType",
+      "description": "socket server type.",
+      "defaultValue":  "tcp"
+    },
+    {
+      "name": "nichetoolkit.socket.server.protocol",
+      "type": "java.lang.String",
+      "sourceType": "java.lang.String",
+      "description": "socket server protocol.",
+      "defaultValue":  "tcp"
+    },
+    {
+      "name": "nichetoolkit.socket.server.rsa-max-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server rsa max size.",
+      "defaultValue":  "117"
+    },
+    {
+      "name": "nichetoolkit.socket.server.read-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server read timeout.",
+      "defaultValue":  "15"
+    },
+    {
+      "name": "nichetoolkit.socket.server.backlog",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server backlog.",
+      "defaultValue":  "128"
+    },
+    {
+      "name": "nichetoolkit.socket.server.tcp-no-delay",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "socket server tcp no delay.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "nichetoolkit.socket.server.keepalive",
+      "type": "java.lang.Boolean",
+      "sourceType": "java.lang.Boolean",
+      "description": "socket server keepalive.",
+      "defaultValue":  "true"
+    },
+    {
+      "name": "nichetoolkit.socket.server.thread-pool.core-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server thread core pool size.",
+      "defaultValue":  "1"
+    },
+    {
+      "name": "nichetoolkit.socket.server.thread-pool.max-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server max thread pool size.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "nichetoolkit.socket.server.thread-pool.keepalive-time",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket server thread keepalive time.",
+      "defaultValue":  "1000"
+    },
+    {
+      "name": "nichetoolkit.socket.server.netty-config.master-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket netty config server master size.",
+      "defaultValue":  "1"
+    },
+    {
+      "name": "nichetoolkit.socket.server.netty-config.slave-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket netty config server slave size.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.process-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server process size.",
+      "defaultValue":  "2"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.core-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server core pool size.",
+      "defaultValue":  "1"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.max-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server max pool size.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.keepalive-time",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server keepalive time.",
+      "defaultValue":  "1000"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.idle-time",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server idle time.",
+      "defaultValue":  "10"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.idle-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server idle size.",
+      "defaultValue":  "6"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.max-read-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server max read size.",
+      "defaultValue":  "2048"
+    },
+    {
+      "name": "nichetoolkit.socket.server.mina-config.package-size",
+      "type": "java.lang.Integer",
+      "sourceType": "java.lang.Integer",
+      "description": "socket mina config server package size.",
+      "defaultValue":  "1024"
+    }
+  ],
+  "hints": [
+    {
+      "name": "nichetoolkit.socket.server.enabled",
+      "values": [
+        {
+          "value": false,
+          "description": "socket server enabled false."
+        },
+        {
+          "value": true,
+          "description": "socket server enabled true."
+        }
+      ]
+    },
+    {
+      "name": "nichetoolkit.socket.server.tcp-no-delay",
+      "values": [
+        {
+          "value": false,
+          "description": "socket server tcp no delay false."
+        },
+        {
+          "value": true,
+          "description": "socket server tcp no delay true."
+        }
+      ]
+    },
+    {
+      "name": "nichetoolkit.socket.server.keepalive",
+      "values": [
+        {
+          "value": false,
+          "description": "socket server keepalive false."
+        },
+        {
+          "value": true,
+          "description": "socket server keepalive true."
+        }
+      ]
+    }
+  ]
+}
