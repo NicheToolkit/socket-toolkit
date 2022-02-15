@@ -14,7 +14,6 @@
     <modules>
         <module>socket-toolkit-server-starter</module>
         <module>socket-toolkit-jt808-starter</module>
-        <module>socket-toolkit-modbus-starter</module>
         <module>socket-toolkit-test-web</module>
     </modules>
 
