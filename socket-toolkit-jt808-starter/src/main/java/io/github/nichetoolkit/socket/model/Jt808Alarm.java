@@ -25,8 +25,6 @@ import java.io.Serializable;
  * <p>AlarmInfo 位置上报中的报警信息</p>
  * @author Cyan (snow22314@outlook.com)
  * @version v.1.0
- * @company 郑州高维空间技术有限公司(c) 2021-2022
- * @date created on 9:04 2021/11/17
  */
 @Builder
 @Getter
