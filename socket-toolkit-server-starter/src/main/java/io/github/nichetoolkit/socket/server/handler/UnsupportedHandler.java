@@ -13,7 +13,7 @@ public abstract class UnsupportedHandler implements SocketPackageHandler {
     @Override
     public byte[] handle(byte[] phone, byte[] flowId, byte[] messageId, byte[] messageBody) {
         log.warn("[Unsupported] no support terminal command id");
-        return commonAnswer(phone,flowId,messageId);
+        return commonAnswer(phone, flowId, messageId);
     }
 
     public abstract byte[] commonAnswer(byte[] phone, byte[] flowId, byte[] messageId);

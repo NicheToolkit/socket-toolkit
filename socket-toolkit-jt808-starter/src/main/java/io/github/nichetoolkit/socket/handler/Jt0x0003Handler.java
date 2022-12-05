@@ -32,9 +32,9 @@ public class Jt0x0003Handler implements SocketPackageHandler {
     @Override
     public byte[] handle(byte[] phoneBytes, byte[] flowIdBytes, byte[] messageIdBytes, byte[] messageBodyBytes) {
         log.info("[Jt0x0003] 0003 [终端注销] terminal logout");
-        threadPoolExecutor.execute(()->{
+        threadPoolExecutor.execute(() -> {
             /** 获取终端手机号码 12 位电话号码 */
-            String phone  = ByteHexUtils.parseHex(phoneBytes);
+            String phone = ByteHexUtils.parseHex(phoneBytes);
             /** 数据库直接删除终端与车辆的关联 */
             dataService.terminalCancel(phone);
             /** 直接删除终端之前的鉴权数据 */

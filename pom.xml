@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.nichetoolkit</groupId>
         <artifactId>rest-toolkit-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.5</version>
     </parent>
 
     <artifactId>socket-toolkit-parent</artifactId>

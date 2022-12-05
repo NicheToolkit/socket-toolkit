@@ -27,13 +27,13 @@ public class Jt0x0301Handler implements SocketPackageHandler {
     @Override
     public byte[] handle(byte[] phoneBytes, byte[] flowIdBytes, byte[] messageIdBytes, byte[] messageBodyBytes) {
         log.info("[Jt0x0301] 0301 [事件报告] event report");
-        threadPoolExecutor.execute(()->{
+        threadPoolExecutor.execute(() -> {
             /** 事件上报id */
             byte eventReportAnswerId = messageBodyBytes[0];
             String phone = ByteHexUtils.parseHex(phoneBytes);
             /** 司机上报预置事件 存储数据库 */
             dataService.eventReport(phone, eventReportAnswerId);
         });
-        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte)0x00);
+        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x00);
     }
 }

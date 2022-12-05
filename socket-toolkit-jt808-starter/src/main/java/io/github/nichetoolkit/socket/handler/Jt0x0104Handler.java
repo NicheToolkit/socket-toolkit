@@ -29,7 +29,7 @@ public class Jt0x0104Handler implements SocketPackageHandler {
         int platformStreamNumber = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes, 0, 2));
         String phone = ByteHexUtils.parseHex(phoneBytes);
         /** 保存下发指令对应应答里 需要时取消息体进行分析 */
-        threadPoolExecutor.execute(() -> 
+        threadPoolExecutor.execute(() ->
                 dataService.terminalAnswer(phone, platformStreamNumber, "8104", "0104", messageBodyBytes));
         return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x00);
     }

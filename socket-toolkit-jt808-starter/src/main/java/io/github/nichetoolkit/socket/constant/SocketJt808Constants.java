@@ -38,7 +38,7 @@ public class SocketJt808Constants {
     public final static byte BIN_0X10 = 0x10;
     public final static byte BIN_0X20 = 0x20;
     public final static byte BIN_0X40 = 0x40;
-    public final static byte BIN_0X80 = (byte)0x80;
+    public final static byte BIN_0X80 = (byte) 0x80;
 
     public final static int NUMBER_0 = 0;
     public final static int NUMBER_1 = 1;

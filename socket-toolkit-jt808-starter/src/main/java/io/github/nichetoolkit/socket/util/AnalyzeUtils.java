@@ -21,14 +21,14 @@ public class AnalyzeUtils {
     /**
      * 回传终端参数分析
      * @param processor 处理器
-     * @param data 终端参数项列表
+     * @param data      终端参数项列表
      */
-    public static void analyzeParameter(Jt808TerminalParameterProcessor processor, byte[] data){
+    public static void analyzeParameter(Jt808TerminalParameterProcessor processor, byte[] data) {
         if (data == null) {
-            return ;
+            return;
         }
         int pos = 0;
-        while(pos < data.length){
+        while (pos < data.length) {
             byte length = data[pos + 4];
 
             byte[] id = ByteHexUtils.subbyte(data, pos, pos + 4);
@@ -45,7 +45,7 @@ public class AnalyzeUtils {
      * @param data 二进制数据
      * @return 返回分析后的对象
      */
-    public static Jt808TerminalProperty analyzeTerminalProperty(byte[] data){
+    public static Jt808TerminalProperty analyzeTerminalProperty(byte[] data) {
         Jt808TerminalProperty terminalProperty = Jt808TerminalProperty.builder().build();
         // 终端类型
         byte[] terminalType = ByteHexUtils.subbyte(data, 0, 2);
@@ -174,14 +174,14 @@ public class AnalyzeUtils {
     /**
      * 定位附属信息
      * @param processor 处理器
-     * @param attache 附属信息
+     * @param attache   附属信息
      */
-    public static void analyzeAttache(Jt808LocationAttacheProcessor processor, byte[] attache){
+    public static void analyzeAttache(Jt808LocationAttacheProcessor processor, byte[] attache) {
         if (attache == null) {
-            return ;
+            return;
         }
         int pos = 0;
-        while(pos < attache.length){
+        while (pos < attache.length) {
             byte length = attache[pos + 1];
 
             int id = attache[pos];
@@ -220,8 +220,8 @@ public class AnalyzeUtils {
 
         Jt808Alarm alarm = analyzeAlarm(alarms);
         Jt808Status status = analyzeStatus(statuses);
-        double longitudeDouble = (double)ByteHexUtils.parseFourInt(longitude) / (double)1000000;
-        double latitudeDouble = (double)ByteHexUtils.parseFourInt(latitude) / (double)1000000;
+        double longitudeDouble = (double) ByteHexUtils.parseFourInt(longitude) / (double) 1000000;
+        double latitudeDouble = (double) ByteHexUtils.parseFourInt(latitude) / (double) 1000000;
         int heightInt = ByteHexUtils.parseTwoInt(height);
         double speedDouble = (double) (ByteHexUtils.parseTwoInt(speed)) / (double) 10;
         int directionInt = ByteHexUtils.parseTwoInt(direction);
@@ -251,47 +251,47 @@ public class AnalyzeUtils {
     /**
      * 分析驾驶员上报信息 兼容 2011 版本协议、 2013 版本协议和2019版本协议
      * @param phoneNum 电话
-     * @param data 上报数据
+     * @param data     上报数据
      * @return 驾驶员信息
      */
-    public static Jt808Driver analyzeDriver(byte[] phoneNum, byte[] data){
+    public static Jt808Driver analyzeDriver(byte[] phoneNum, byte[] data) {
         // 版本信息
         int ver = 0;
 
-        if(phoneNum.length == SocketJt808Constants.NUMBER_10){
+        if (phoneNum.length == SocketJt808Constants.NUMBER_10) {
             ver = SocketJt808Constants.YEAR_2019;
         } else {
             // 拔卡 没有信息 只有7字节消息
-            if(data[SocketJt808Constants.NUMBER_0] == SocketJt808Constants.NUMBER_2 && data.length == SocketJt808Constants.NUMBER_7){
+            if (data[SocketJt808Constants.NUMBER_0] == SocketJt808Constants.NUMBER_2 && data.length == SocketJt808Constants.NUMBER_7) {
                 ver = SocketJt808Constants.YEAR_2013;
-            } else if(data[SocketJt808Constants.NUMBER_0] == SocketJt808Constants.NUMBER_1 && data.length >= SocketJt808Constants.NUMBER_8){
-                if( data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_0 ) {
+            } else if (data[SocketJt808Constants.NUMBER_0] == SocketJt808Constants.NUMBER_1 && data.length >= SocketJt808Constants.NUMBER_8) {
+                if (data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_0) {
                     // 这里需要通过解析消息长度判断版本
                     int len2011 = 0, len2013 = 0;
-                    try{
+                    try {
                         len2011 = 62 + data[0] + data[data[0] + 61];
-                    }catch(IndexOutOfBoundsException e){
+                    } catch (IndexOutOfBoundsException e) {
                         log.warn(e.getMessage());
                     }
-                    try{
+                    try {
                         len2013 = 34 + data[8] + data[data[8] + 29];
-                    }catch(IndexOutOfBoundsException e){
+                    } catch (IndexOutOfBoundsException e) {
                         log.warn(e.getMessage());
                     }
 
-                    if(data.length == len2011){
+                    if (data.length == len2011) {
                         ver = SocketJt808Constants.YEAR_2011;
                     }
-                    if(data.length == len2013){
+                    if (data.length == len2013) {
                         ver = SocketJt808Constants.YEAR_2013;
                     }
-                }else if(data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_1
+                } else if (data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_1
                         || data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_2
                         || data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_3
-                        || data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_4){
-                    if(data.length == SocketJt808Constants.NUMBER_8){
+                        || data[SocketJt808Constants.NUMBER_7] == SocketJt808Constants.NUMBER_4) {
+                    if (data.length == SocketJt808Constants.NUMBER_8) {
                         ver = SocketJt808Constants.YEAR_2013;
-                    }else{
+                    } else {
                         ver = SocketJt808Constants.YEAR_2011;
                     }
                 } else {
@@ -303,10 +303,9 @@ public class AnalyzeUtils {
         }
 
 
-
-        if( ver == SocketJt808Constants.YEAR_2011 ){
+        if (ver == SocketJt808Constants.YEAR_2011) {
             return analyzeDriver2011(data);
-        } else if (ver == SocketJt808Constants.YEAR_2013){
+        } else if (ver == SocketJt808Constants.YEAR_2013) {
             return analyzeDriver2013(data);
         } else if (ver == SocketJt808Constants.YEAR_2019) {
             return analyzeDriver2019(data);
@@ -314,19 +313,19 @@ public class AnalyzeUtils {
         return null;
     }
 
-    private static Jt808Driver analyzeDriver2011(byte[] data){
+    private static Jt808Driver analyzeDriver2011(byte[] data) {
         // 姓名长度
         int nameLength = data[0];
         // 驾驶员姓名
-        byte[] name = ByteHexUtils.subbyte(data,1,nameLength + 1);
+        byte[] name = ByteHexUtils.subbyte(data, 1, nameLength + 1);
         // 身份证编码
-        byte[] idCard = ByteHexUtils.subbyte(data,nameLength + 1,nameLength + 21);
+        byte[] idCard = ByteHexUtils.subbyte(data, nameLength + 1, nameLength + 21);
         // 从业资格证编码
-        byte[] certificate = ByteHexUtils.subbyte(data,nameLength + 21,nameLength + 61);
+        byte[] certificate = ByteHexUtils.subbyte(data, nameLength + 21, nameLength + 61);
         // 从业资格证发证机构名称长度 最后全是 所以不需要
 //        int certificatePublishAgentNameLength = data[nameLength + 61];
         // 从业资格证发证机构名称
-        byte[] certificatePublishAgentName = ByteHexUtils.subbyte(data,nameLength + 62);
+        byte[] certificatePublishAgentName = ByteHexUtils.subbyte(data, nameLength + 62);
 
         Jt808Driver driver = Jt808Driver.builder().build();
 
@@ -340,37 +339,37 @@ public class AnalyzeUtils {
         return driver;
     }
 
-    private static Jt808Driver analyzeDriver2013(byte[] data){
+    private static Jt808Driver analyzeDriver2013(byte[] data) {
         Jt808Driver driver = Jt808Driver.builder().build();
         driver.setDriverAlarm(Jt808DriverAlarm.builder().build());
 
-        if(data[0] == SocketJt808Constants.NUMBER_1){
+        if (data[0] == SocketJt808Constants.NUMBER_1) {
             // 驾驶员上班 卡插入
             driver.getDriverAlarm().setPullOutCard(false);
-        }else if(data[0] == SocketJt808Constants.NUMBER_2){
+        } else if (data[0] == SocketJt808Constants.NUMBER_2) {
             // 驾驶员下班 卡拔出
             driver.getDriverAlarm().setPullOutCard(true);
-        }else{
+        } else {
             // 2013 第一个字节 不支持其他形式
             return null;
         }
-        String gTime = Jt808Utils.parseDatetime(ByteHexUtils.subbyte(data,1,7));
+        String gTime = Jt808Utils.parseDatetime(ByteHexUtils.subbyte(data, 1, 7));
 
         driver.setDatetime(gTime);
 
         // 拔卡则不再继续解析
-        if(!driver.getDriverAlarm().isPullOutCard()){
-            switch (data[7]){
+        if (!driver.getDriverAlarm().isPullOutCard()) {
+            switch (data[7]) {
                 case 0x00:
                     // IC 卡读卡成功 读取驾驶员信息
                     int nameLength = data[8];
-                    String driverName = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,9,
+                    String driverName = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, 9,
                             nameLength + 9));
-                    String certificate = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,nameLength + 9,
+                    String certificate = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, nameLength + 9,
                             nameLength + 29));
                     int certificatePublishAgentNameLength = data[nameLength + 29];
                     String certificatePublishAgentName =
-                            Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,nameLength + 30,
+                            Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, nameLength + 30,
                                     nameLength + 30 + certificatePublishAgentNameLength));
                     String expiryTime = ByteHexUtils.parseBcds(ByteHexUtils.subbyte(data,
                             nameLength + 30 + certificatePublishAgentNameLength));
@@ -407,37 +406,37 @@ public class AnalyzeUtils {
         return driver;
     }
 
-    private static Jt808Driver analyzeDriver2019(byte[] data){
+    private static Jt808Driver analyzeDriver2019(byte[] data) {
         Jt808Driver driver = Jt808Driver.builder().build();
         driver.setDriverAlarm(Jt808DriverAlarm.builder().build());
 
-        if(data[0] == SocketJt808Constants.NUMBER_1){
+        if (data[0] == SocketJt808Constants.NUMBER_1) {
             // 驾驶员上班 卡插入
             driver.getDriverAlarm().setPullOutCard(false);
-        }else if(data[0] == SocketJt808Constants.NUMBER_2){
+        } else if (data[0] == SocketJt808Constants.NUMBER_2) {
             // 驾驶员下班 卡拔出 没有其他信息
             driver.getDriverAlarm().setPullOutCard(true);
-        }else{
+        } else {
             // 2019 第一个字节 不支持其他形式
             return null;
         }
-        String gTime = Jt808Utils.parseDatetime(ByteHexUtils.subbyte(data,1,7));
+        String gTime = Jt808Utils.parseDatetime(ByteHexUtils.subbyte(data, 1, 7));
 
         driver.setDatetime(gTime);
 
         // 拔卡则不再继续解析
-        if(!driver.getDriverAlarm().isPullOutCard()){
-            switch (data[7]){
+        if (!driver.getDriverAlarm().isPullOutCard()) {
+            switch (data[7]) {
                 case 0x00:
                     // IC 卡读卡成功 读取驾驶员信息
                     int nameLength = data[8];
-                    String driverName = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,9,
+                    String driverName = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, 9,
                             nameLength + 9));
-                    String certificate = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,nameLength + 9,
+                    String certificate = Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, nameLength + 9,
                             nameLength + 29));
                     int certificatePublishAgentNameLength = data[nameLength + 29];
                     String certificatePublishAgentName =
-                            Jt808Utils.parseGBK(ByteHexUtils.subbyte(data,nameLength + 30,
+                            Jt808Utils.parseGBK(ByteHexUtils.subbyte(data, nameLength + 30,
                                     nameLength + 30 + certificatePublishAgentNameLength));
                     String expiryTime = ByteHexUtils.parseBcds(ByteHexUtils.subbyte(data,
                             nameLength + certificatePublishAgentNameLength + 30,
@@ -507,9 +506,9 @@ public class AnalyzeUtils {
      * @param data 参总线项目列表
      */
     public static void analyzeCanItem(Jt808CanDataItemProcessor processor, byte[] data) {
-        for(int pos = 0, len = 12;pos < data.length; pos += len){
-            byte[] head = ByteHexUtils.subbyte(data, pos,pos + 4);
-            byte[] tail = ByteHexUtils.subbyte(data, pos + 4,pos + len);
+        for (int pos = 0, len = 12; pos < data.length; pos += len) {
+            byte[] head = ByteHexUtils.subbyte(data, pos, pos + 4);
+            byte[] tail = ByteHexUtils.subbyte(data, pos + 4, pos + len);
             Jt808CanDataItem item = Jt808CanDataItem.builder().build();
 
             int headInt = ByteHexUtils.parseFourInt(head);
@@ -531,7 +530,7 @@ public class AnalyzeUtils {
      */
     public static Jt808Media analyzeMedia(byte[] data) {
         Jt808Media media = Jt808Media.builder().build();
-        media.setMediaId(ByteHexUtils.parseFourInt(ByteHexUtils.subbyte(data,0,4)));
+        media.setMediaId(ByteHexUtils.parseFourInt(ByteHexUtils.subbyte(data, 0, 4)));
         media.setMediaType(data[4]);
         media.setMediaFormat(data[5]);
         media.setEventNumber(data[6]);

@@ -10,7 +10,7 @@ import java.util.List;
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */
-public class NettyBufferCache implements BufferCache{
+public class NettyBufferCache implements BufferCache {
     private ChannelHandlerContext ctx;
     private ByteBuf message;
     private List<Object> output;

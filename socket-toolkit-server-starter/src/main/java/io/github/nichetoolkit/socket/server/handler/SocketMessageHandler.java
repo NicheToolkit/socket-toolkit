@@ -23,5 +23,5 @@ public interface SocketMessageHandler {
     void doHandle(Object session, Object message) throws RestException;
 
     void afterSession(Object session) throws RestException;
-    
+
 }

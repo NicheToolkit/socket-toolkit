@@ -29,10 +29,10 @@ public class Jt0x0802Handler implements SocketPackageHandler {
         log.info("[Jt0x0802] 0802 [存储多媒体检索应答] search stored media data answer");
         /** 保存下发指令对应应答里 需要时取消息体进行分析 */
         threadPoolExecutor.execute(() -> {
-            int flowId = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte( messageBodyBytes, 0, 2));
+            int flowId = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes, 0, 2));
             String phone = ByteHexUtils.parseHex(phoneBytes);
             dataService.terminalAnswer(phone, flowId, "8802", "0802", messageBodyBytes);
         });
-        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte) 0);
+        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0);
     }
 }

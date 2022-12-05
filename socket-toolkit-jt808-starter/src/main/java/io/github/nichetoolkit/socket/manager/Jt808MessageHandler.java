@@ -40,7 +40,6 @@ public class Jt808MessageHandler implements SocketMessageHandler {
     private SocketJt808Properties jt808Properties;
 
 
-
     @Override
     public void beforeMessage(Object jt808Message) throws RestException {
 
@@ -51,7 +50,7 @@ public class Jt808MessageHandler implements SocketMessageHandler {
         byte[] messageBytes = (byte[]) message;
         Jt808Message jt808Message = parseMessage(messageBytes);
         handleSession(jt808Message, session);
-        handleMessage(session,jt808Message);
+        handleMessage(session, jt808Message);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class Jt808MessageHandler implements SocketMessageHandler {
 
     }
 
-    public void handleMessage(Object session,Jt808Message jt808Message) throws RestException {
+    public void handleMessage(Object session, Jt808Message jt808Message) throws RestException {
         byte[] response = null;
         String phone = jt808Message.getPhone();
         byte[] originDataBytes = jt808Message.getOriginDataBytes();
@@ -232,12 +231,12 @@ public class Jt808MessageHandler implements SocketMessageHandler {
             sentPackages.clear();
         }
 
-        for(int i = 1; i <= packageSize; i++){
+        for (int i = 1; i <= packageSize; i++) {
             byte[] bodyBufferBytes;
-            if(packageSize == i){
-                bodyBufferBytes = ByteHexUtils.subbyte(messageBodyBytes, (i-1) * 1023);
-            }else{
-                bodyBufferBytes = ByteHexUtils.subbyte(messageBodyBytes, (i-1) * 1023, i * 1023);
+            if (packageSize == i) {
+                bodyBufferBytes = ByteHexUtils.subbyte(messageBodyBytes, (i - 1) * 1023);
+            } else {
+                bodyBufferBytes = ByteHexUtils.subbyte(messageBodyBytes, (i - 1) * 1023, i * 1023);
             }
             byte[] data = Jt808Utils.warp(
                     messageIdBytes,
@@ -253,7 +252,7 @@ public class Jt808MessageHandler implements SocketMessageHandler {
             } else if (session instanceof ChannelHandlerContext) {
                 ((ChannelHandlerContext) session).writeAndFlush(data);
             }
-            flowId ++;
+            flowId++;
         }
     }
 

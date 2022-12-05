@@ -16,7 +16,7 @@ public class MinaCodecFactory implements ProtocolCodecFactory {
     private ProtocolDecoder decoder;
     private ProtocolEncoder encoder;
 
-    public MinaCodecFactory( ProtocolDecoder decoder, ProtocolEncoder encoder) {
+    public MinaCodecFactory(ProtocolDecoder decoder, ProtocolEncoder encoder) {
         this.encoder = encoder;
         this.decoder = decoder;
     }

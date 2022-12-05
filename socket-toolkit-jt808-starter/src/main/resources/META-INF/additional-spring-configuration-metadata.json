@@ -7,41 +7,40 @@
     }
   ],
   "properties": [
-
     {
       "name": "nichetoolkit.socket.jt808.auth",
       "type": "java.lang.Boolean",
       "sourceType": "java.lang.Boolean",
       "description": "jt808 server auth.",
-      "defaultValue":  "true"
+      "defaultValue": "true"
     },
     {
       "name": "nichetoolkit.socket.jt808.auth-ids",
       "type": "java.lang.String[]",
       "sourceType": "java.lang.String[]",
       "description": "jt808 ignored auth ids.",
-      "defaultValue":  "0100,0102"
+      "defaultValue": "0100,0102"
     },
     {
       "name": "nichetoolkit.socket.jt808.use-constant-auth",
       "type": "java.lang.Boolean",
       "sourceType": "java.lang.Boolean",
       "description": "use constant auth.",
-      "defaultValue":  "false"
+      "defaultValue": "false"
     },
     {
       "name": "nichetoolkit.socket.jt808.random-auth-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "random auth size.",
-      "defaultValue":  "18"
+      "defaultValue": "18"
     },
     {
       "name": "nichetoolkit.socket.jt808.constant-auth",
       "type": "java.lang.String",
       "sourceType": "java.lang.String",
       "description": "constant auth code.",
-      "defaultValue":  "736875616E67776569"
+      "defaultValue": "736875616E67776569"
     }
   ],
   "hints": [

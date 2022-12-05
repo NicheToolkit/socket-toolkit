@@ -93,7 +93,7 @@ public class NettyMessageDecoder extends MessageToMessageDecoder<ByteBuf> {
     }
 
     public boolean doDecode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) {
-         NettyBufferCache bufferCache = new NettyBufferCache(ctx, msg, out);
+        NettyBufferCache bufferCache = new NettyBufferCache(ctx, msg, out);
         return messageCoder.decode(bufferCache);
     }
 }
