@@ -12,161 +12,161 @@
       "type": "java.lang.Boolean",
       "sourceType": "java.lang.Boolean",
       "description": "socket server enable.",
-      "defaultValue": "true"
+      "defaultValue":  "true"
     },
     {
       "name": "nichetoolkit.socket.server.name",
       "type": "java.lang.String",
       "sourceType": "java.lang.String",
       "description": "socket server name.",
-      "defaultValue": "socket-server"
+      "defaultValue":  "socket-server"
     },
     {
       "name": "nichetoolkit.socket.server.port",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server port.",
-      "defaultValue": "9999"
+      "defaultValue":  "9999"
     },
     {
       "name": "nichetoolkit.socket.server.server-type",
       "type": "io.github.nichetoolkit.socket.enums.ServerType",
       "sourceType": "io.github.nichetoolkit.socket.enums.ServerType",
       "description": "socket server type.",
-      "defaultValue": "tcp"
+      "defaultValue":  "tcp"
     },
     {
       "name": "nichetoolkit.socket.server.protocol",
       "type": "java.lang.String",
       "sourceType": "java.lang.String",
       "description": "socket server protocol.",
-      "defaultValue": "tcp"
+      "defaultValue":  "tcp"
     },
     {
       "name": "nichetoolkit.socket.server.rsa-max-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server rsa max size.",
-      "defaultValue": "117"
+      "defaultValue":  "117"
     },
     {
       "name": "nichetoolkit.socket.server.read-timeout",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server read timeout.",
-      "defaultValue": "15"
+      "defaultValue":  "15"
     },
     {
       "name": "nichetoolkit.socket.server.backlog",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server backlog.",
-      "defaultValue": "128"
+      "defaultValue":  "128"
     },
     {
       "name": "nichetoolkit.socket.server.tcp-no-delay",
       "type": "java.lang.Boolean",
       "sourceType": "java.lang.Boolean",
       "description": "socket server tcp no delay.",
-      "defaultValue": "true"
+      "defaultValue":  "true"
     },
     {
       "name": "nichetoolkit.socket.server.keepalive",
       "type": "java.lang.Boolean",
       "sourceType": "java.lang.Boolean",
       "description": "socket server keepalive.",
-      "defaultValue": "true"
+      "defaultValue":  "true"
     },
     {
       "name": "nichetoolkit.socket.server.thread-pool.core-pool-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server thread core pool size.",
-      "defaultValue": "1"
+      "defaultValue":  "1"
     },
     {
       "name": "nichetoolkit.socket.server.thread-pool.max-pool-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server max thread pool size.",
-      "defaultValue": "10"
+      "defaultValue":  "10"
     },
     {
       "name": "nichetoolkit.socket.server.thread-pool.keepalive-time",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket server thread keepalive time.",
-      "defaultValue": "1000"
+      "defaultValue":  "1000"
     },
     {
       "name": "nichetoolkit.socket.server.netty-config.master-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket netty config server master size.",
-      "defaultValue": "1"
+      "defaultValue":  "1"
     },
     {
       "name": "nichetoolkit.socket.server.netty-config.slave-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket netty config server slave size.",
-      "defaultValue": "10"
+      "defaultValue":  "10"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.process-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server process size.",
-      "defaultValue": "2"
+      "defaultValue":  "2"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.core-pool-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server core pool size.",
-      "defaultValue": "1"
+      "defaultValue":  "1"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.max-pool-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server max pool size.",
-      "defaultValue": "10"
+      "defaultValue":  "10"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.keepalive-time",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server keepalive time.",
-      "defaultValue": "1000"
+      "defaultValue":  "1000"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.idle-time",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server idle time.",
-      "defaultValue": "10"
+      "defaultValue":  "10"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.idle-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server idle size.",
-      "defaultValue": "6"
+      "defaultValue":  "6"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.max-read-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server max read size.",
-      "defaultValue": "2048"
+      "defaultValue":  "2048"
     },
     {
       "name": "nichetoolkit.socket.server.mina-config.package-size",
       "type": "java.lang.Integer",
       "sourceType": "java.lang.Integer",
       "description": "socket mina config server package size.",
-      "defaultValue": "1024"
+      "defaultValue":  "1024"
     }
   ],
   "hints": [

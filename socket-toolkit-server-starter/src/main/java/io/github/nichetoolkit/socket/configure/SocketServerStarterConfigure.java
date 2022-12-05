@@ -45,12 +45,12 @@ public class SocketServerStarterConfigure implements ApplicationListener<Applica
             return;
         } else if (GeneralUtils.isEmpty(server) && applicationContext.containsBean(serverName)) {
             server = (SocketServer) applicationContext.getBean(serverName);
-            log.debug("{} server instance for name {} has been found !", serverType, serverName);
+            log.debug("{} server instance for name {} has been found !",serverType, serverName);
         }
         if (server.start()) {
             log.info("{} server of name {} started on port {}", serverType, serverName, properties.getPort());
         } else {
-            log.error("{} server of name {} start failed!", serverType, serverName);
+            log.error("{} server of name {} start failed!",serverType, serverName);
         }
     }
 }

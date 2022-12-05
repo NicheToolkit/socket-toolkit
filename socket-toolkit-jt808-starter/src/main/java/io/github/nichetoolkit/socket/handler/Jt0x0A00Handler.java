@@ -44,17 +44,17 @@ public class Jt0x0A00Handler implements SocketPackageHandler {
     public byte[] handle(byte[] phoneBytes, byte[] flowIdBytes, byte[] messageIdBytes, byte[] messageBodyBytes) {
         log.info("[Jt0x0A00] 0A00 [终端RSA公钥] terminal rsa");
         /** 终端 RSA 公钥 { e, n } */
-        byte[] e = ByteHexUtils.subbyte(messageBodyBytes, 0, 4);
-        byte[] n = ByteHexUtils.subbyte(messageBodyBytes, 4);
+        byte[] e = ByteHexUtils.subbyte(messageBodyBytes,0,4);
+        byte[] n = ByteHexUtils.subbyte(messageBodyBytes,4);
         int maxLen = 128;
-        if (n.length == maxLen) {
+        if(n.length == maxLen){
             /** 存储加密信息 以便收到数据后解密 */
-            threadPoolExecutor.execute(() -> {
+            threadPoolExecutor.execute(()-> {
                 String phone = ByteHexUtils.parseHex(phoneBytes);
                 dataService.terminalRsa(phone, e, n);
             });
             return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x00);
-        } else {
+        }else{
             return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x01);
         }
     }

@@ -28,7 +28,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -41,7 +40,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Configuration
 @ComponentScan(value = "io.github.nichetoolkit.socket")
-public class SocketServerAutoConfigure {
+public class SocketServerAutoConfigure  {
 
     @Autowired
     public SocketServerAutoConfigure() {
@@ -131,16 +130,16 @@ public class SocketServerAutoConfigure {
 
         @Bean
         @ConditionalOnMissingBean(NettyChannelInitializer.class)
-        public NettyChannelInitializer channelInitializer(NettyMessageDecoder messageDecoder, NettyMessageEncoder messageEncoder, NettyServerHandler serverHandler) {
-            return new NettyChannelInitializer(messageDecoder, messageEncoder, serverHandler);
+        public NettyChannelInitializer channelInitializer(NettyMessageDecoder messageDecoder, NettyMessageEncoder messageEncoder,NettyServerHandler serverHandler) {
+            return new NettyChannelInitializer(messageDecoder,messageEncoder,serverHandler);
         }
 
         @Bean
         @Primary
         @ConditionalOnMissingBean(SocketServer.class)
-        public SocketServer nettyServer(SocketServerProperties properties, NettyChannelInitializer channelInitializer) {
-            DefaultNettyServer defaultNettyServer = new DefaultNettyServer(properties, channelInitializer);
-            ServerManager.add(properties.getName(), defaultNettyServer);
+        public SocketServer nettyServer(SocketServerProperties properties,NettyChannelInitializer channelInitializer) {
+            DefaultNettyServer defaultNettyServer = new DefaultNettyServer(properties,channelInitializer);
+            ServerManager.add(properties.getName(),defaultNettyServer);
             return defaultNettyServer;
         }
 
@@ -180,23 +179,23 @@ public class SocketServerAutoConfigure {
 
         @Bean
         @ConditionalOnMissingBean(MinaCodecFactory.class)
-        public MinaCodecFactory codecFactory(MinaMessageDecoder messageDecoder, MinaMessageEncoder messageEncoder) {
-            return new MinaCodecFactory(messageDecoder, messageEncoder);
+        public MinaCodecFactory codecFactory(MinaMessageDecoder messageDecoder,MinaMessageEncoder messageEncoder) {
+            return new MinaCodecFactory(messageDecoder,messageEncoder);
         }
 
         @Bean
         @Primary
         @ConditionalOnMissingBean(MinaServerHandler.class)
         public MinaServerHandler serverHandler(SocketServerHandler socketServerHandler, SocketServerProperties properties) {
-            return new MinaServerHandler(socketServerHandler, properties);
+            return new MinaServerHandler(socketServerHandler,properties);
         }
 
         @Bean
         @Primary
         @ConditionalOnMissingBean(SocketServer.class)
         public SocketServer minaServer(SocketServerProperties properties, ExecutorFilter executorFilter, MinaCodecFactory codecFactory, MinaServerHandler serverHandler) {
-            DefaultMinaServer defaultMinaServer = new DefaultMinaServer(properties, executorFilter, codecFactory, serverHandler);
-            ServerManager.add(properties.getName(), defaultMinaServer);
+            DefaultMinaServer defaultMinaServer = new DefaultMinaServer(properties,executorFilter,codecFactory,serverHandler);
+            ServerManager.add(properties.getName(),defaultMinaServer);
             return defaultMinaServer;
         }
     }

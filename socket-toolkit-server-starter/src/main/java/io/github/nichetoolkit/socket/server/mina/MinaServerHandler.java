@@ -29,9 +29,9 @@ public class MinaServerHandler extends IoHandlerAdapter {
     }
 
     @Override
-    public void sessionIdle(IoSession session, IdleStatus idleStatus) {
+    public void sessionIdle(IoSession session, IdleStatus idleStatus){
         log.debug("session idle, id: {} ", session.getId());
-        if (session.getIdleCount(idleStatus) > serverProperties.getMinaConfig().getIdleSize()) {
+        if(session.getIdleCount( idleStatus ) > serverProperties.getMinaConfig().getIdleSize()){
             session.closeNow();
         }
     }
@@ -81,8 +81,8 @@ public class MinaServerHandler extends IoHandlerAdapter {
 
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        byte[] originData = (byte[]) message;
+        byte[] originData  = (byte[]) message;
         log.debug("id: {}, message: {}", session.getId(), Arrays.toString(originData));
-        socketServerHandler.handle(session, message);
+        socketServerHandler.handle(session,message);
     }
 }

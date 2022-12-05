@@ -20,10 +20,10 @@ public class Jt808Utils {
 
     /**
      * 0x8100 终端注册应答
-     * @param phoneBytes  sim卡号
+     * @param phoneBytes     sim卡号
      * @param flowIdBytes 终端对应信息流水
-     * @param result      结果 0 成功 1 车辆已经被注册 2 数据库中无车辆 3 终端已被注册 4 数据库中无终端
-     * @param auth        结果为0的时候的鉴权码
+     * @param result         结果 0 成功 1 车辆已经被注册 2 数据库中无车辆 3 终端已被注册 4 数据库中无终端
+     * @param auth           结果为0的时候的鉴权码
      * @return byte[] 返回应答
      */
     public static byte[] buildJt8100(byte[] phoneBytes, byte[] flowIdBytes, byte result, String auth) {
@@ -59,10 +59,10 @@ public class Jt808Utils {
 
     /**
      * 0x8003 补传分包请求
-     * @param phoneBytes        sim卡号
+     * @param phoneBytes   sim卡号
      * @param originFlowIdBytes 对应要求补传的原始消息第一包的流水号
-     * @param size              重传包总数
-     * @param idList            重传包id列表
+     * @param size         重传包总数
+     * @param idList       重传包id列表
      * @return byte[] 返回应答
      */
     public static byte[] buildJt8003(byte[] phoneBytes, byte[] originFlowIdBytes, byte size, byte[] idList) {
@@ -75,10 +75,10 @@ public class Jt808Utils {
 
     /**
      * 0x8001 平台通用应答
-     * @param phoneBytes             sim卡号
+     * @param phoneBytes        sim卡号
      * @param terminalFlowIdBytes    对应终端流水号
      * @param terminalMessageIdBytes 对应终端消息Id
-     * @param body                   应答参数 0 成功/确认 1 失败 2 消息有误 3 不支持 4 报警处理确认
+     * @param body              应答参数 0 成功/确认 1 失败 2 消息有误 3 不支持 4 报警处理确认
      * @return byte[] 返回应答
      */
     public static byte[] buildJt8001(byte[] phoneBytes, byte[] terminalFlowIdBytes, byte[] terminalMessageIdBytes, byte body) {
@@ -101,7 +101,7 @@ public class Jt808Utils {
         return new String(bytes, SocketJt808Constants.GBK_CHARSET).trim();
     }
 
-    public static String parseAscII(byte[] bytes) {
+    public static String parseAscII(byte[] bytes){
         return new String(bytes, StandardCharsets.US_ASCII).trim();
     }
 
@@ -121,7 +121,7 @@ public class Jt808Utils {
      * @return boolean
      */
     public static boolean verifyLocation(byte[] location) {
-        /** 纬度[以度为单位的值乘以 10 的 6 次方，精确到百万分之一度] */
+        /** 纬度[以度为单位的值乘以 10 的 6 次方，精确到百万分之一度] */ 
         byte[] latitude = ByteHexUtils.subbyte(location, 8, 12);
         /**  经度[以度为单位的值乘以 10 的 6 次方，精确到百万分之一度] */
         byte[] longitude = ByteHexUtils.subbyte(location, 12, 16);
@@ -134,11 +134,11 @@ public class Jt808Utils {
         /** 时间 [yy-MM-dd-hh-mm-ss] */
         byte[] datetime = ByteHexUtils.subbyte(location, 22, 28);
 
-        double longitudeDouble = (double) ByteHexUtils.parseFourInt(longitude) / (double) 1000000;
-        if (longitudeDouble > 180.0 || longitudeDouble < -180.0) {
+        double longitudeDouble = (double)ByteHexUtils.parseFourInt(longitude) / (double)1000000;
+        if(longitudeDouble > 180.0 || longitudeDouble < -180.0){
             return false;
         }
-        double latitudeDouble = (double) ByteHexUtils.parseFourInt(latitude) / (double) 1000000;
+        double latitudeDouble = (double)ByteHexUtils.parseFourInt(latitude) / (double)1000000;
         if (latitudeDouble > 90.0 || latitudeDouble < -90.0) {
             return false;
         }
@@ -189,10 +189,10 @@ public class Jt808Utils {
      */
     public static int messageBodyLength(byte[] bodyProps) {
         int length = 0;
-        if (bodyProps.length == SocketJt808Constants.NUMBER_2) {
+        if( bodyProps.length == SocketJt808Constants.NUMBER_2 ){
             int buf = 0x03ff;
-            int body = ((bodyProps[0] << 8) & 0xff00) ^ (bodyProps[1] & 0x00ff);
-            length = body & buf;
+            int body = ((bodyProps[0]<<8)&0xff00)^(bodyProps[1]&0x00ff);
+            length = body&buf;
         }
         log.trace("body length is " + length);
         return length;
@@ -294,35 +294,35 @@ public class Jt808Utils {
 
     /**
      * 包装返回值
-     * @param messageId   消息ID
-     * @param phoneBytes  电话
-     * @param total       分包总数
-     * @param count       分包序号 从1开始
-     * @param flowId      平台流水号
+     * @param messageId 消息ID
+     * @param phoneBytes 电话
+     * @param total 分包总数
+     * @param count 分包序号 从1开始
+     * @param flowId 平台流水号
      * @param messageBody 消息体
      * @return 返回值
      */
-    public static byte[] warp(byte[] messageId, byte[] phoneBytes, int total, int count, int flowId, byte[] messageBody) {
+    public static byte[] warp (byte[] messageId, byte[] phoneBytes,int total, int count, int flowId, byte[] messageBody) {
         int bodyLen = messageBody.length;
         if (phoneBytes.length == 10) {
             // 2019
             return ByteHexUtils.union(
                     messageId,
-                    new byte[]{(byte) (((bodyLen >>> 8) & 0x03) | 0x40), (byte) (bodyLen & 0xff), 0x01},
+                    new byte[]{(byte)(((bodyLen>>>8) & 0x03) | 0x40),(byte) (bodyLen&0xff), 0x01},
                     phoneBytes,
-                    new byte[]{(byte) ((flowId >>> 8) & 0xff), (byte) (flowId & 0xff)},
-                    new byte[]{(byte) ((total >>> 8) & 0xff), (byte) (total & 0xff)},
-                    new byte[]{(byte) ((count >>> 8) & 0xff), (byte) (count & 0xff)},
+                    new byte[]{(byte) ((flowId>>>8)&0xff),(byte) (flowId&0xff)},
+                    new byte[]{(byte) ((total>>>8)&0xff),(byte) (total&0xff)},
+                    new byte[]{(byte) ((count>>>8)&0xff),(byte) (count&0xff)},
                     messageBody);
         } else {
             // 2011 2013
             return ByteHexUtils.union(
                     messageId,
-                    new byte[]{(byte) ((bodyLen >>> 8) & 0x03), (byte) (bodyLen & 0xff)},
+                    new byte[]{(byte)((bodyLen>>>8) & 0x03),(byte) (bodyLen&0xff)},
                     phoneBytes,
-                    new byte[]{(byte) ((flowId >>> 8) & 0xff), (byte) (flowId & 0xff)},
-                    new byte[]{(byte) ((total >>> 8) & 0xff), (byte) (total & 0xff)},
-                    new byte[]{(byte) ((count >>> 8) & 0xff), (byte) (count & 0xff)},
+                    new byte[]{(byte) ((flowId>>>8)&0xff),(byte) (flowId&0xff)},
+                    new byte[]{(byte) ((total>>>8)&0xff),(byte) (total&0xff)},
+                    new byte[]{(byte) ((count>>>8)&0xff),(byte) (count&0xff)},
                     messageBody);
         }
     }

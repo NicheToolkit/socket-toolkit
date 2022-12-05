@@ -36,9 +36,9 @@ public class Jt808SessionManager {
         SESSION_MAP.put(phone, session);
     }
 
-    public static void write(String phone, byte[] data) {
+    public static void write(String phone, byte[] data){
         Object session = get(phone);
-        if (GeneralUtils.isNotEmpty(phone)) {
+        if(GeneralUtils.isNotEmpty(phone)) {
             if (session instanceof ChannelHandlerContext) {
                 ((ChannelHandlerContext) session).writeAndFlush(data);
             } else if (session instanceof IoSession) {

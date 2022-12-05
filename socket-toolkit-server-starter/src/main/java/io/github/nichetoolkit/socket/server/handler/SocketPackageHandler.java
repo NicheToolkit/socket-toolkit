@@ -9,9 +9,9 @@ public interface SocketPackageHandler {
 
     /**
      * 解析完成后对数据进行处理的方法
-     * @param phoneBytes       终端号码字节数组
-     * @param flowIdBytes      平台流水号
-     * @param messageIdBytes   消息ID
+     * @param phoneBytes 终端号码字节数组
+     * @param flowIdBytes 平台流水号
+     * @param messageIdBytes 消息ID
      * @param messageBodyBytes 消息体
      * @return byte[] 返回应答消息
      */

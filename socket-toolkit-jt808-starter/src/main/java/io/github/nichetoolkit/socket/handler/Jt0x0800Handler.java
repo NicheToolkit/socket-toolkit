@@ -35,6 +35,6 @@ public class Jt0x0800Handler implements SocketPackageHandler {
             Jt808Media jt808Media = AnalyzeUtils.analyzeMedia(messageBodyBytes);
             dataService.mediaInfo(phone, jt808Media);
         });
-        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0);
+        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte) 0);
     }
 }

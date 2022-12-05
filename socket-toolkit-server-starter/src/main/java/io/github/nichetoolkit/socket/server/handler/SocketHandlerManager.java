@@ -40,7 +40,7 @@ public class SocketHandlerManager {
 
     public static void initSocketPackageHandler() {
         UNSUPPORTED_HANDLER = ContextUtils.getBean(UnsupportedHandler.class);
-        Map<String, Object> socketPackageHandlerMap = ContextHolder.getApplicationContext().getBeansWithAnnotation(SocketPackage.class);
+        Map<String, Object> socketPackageHandlerMap =  ContextHolder.getApplicationContext().getBeansWithAnnotation(SocketPackage.class);
         if (GeneralUtils.isNotEmpty(socketPackageHandlerMap)) {
             for (Map.Entry<String, Object> entry : socketPackageHandlerMap.entrySet()) {
                 Object handler = entry.getValue();
@@ -50,7 +50,7 @@ public class SocketHandlerManager {
                         int messageId = socketPackage.messageId();
                         SocketPackageHandler socketPackageHandler = PACKAGE_HANDLER_MAP.get(messageId);
                         if (GeneralUtils.isEmpty(socketPackageHandler)) {
-                            PACKAGE_HANDLER_MAP.put(messageId, (SocketPackageHandler) handler);
+                            PACKAGE_HANDLER_MAP.put(messageId,(SocketPackageHandler)handler);
                             log.debug("add package handler {} for {}", handler.getClass().getName(),
                                     ByteHexUtils.parseHex(ByteHexUtils.parseTwoByte(messageId)));
                         }

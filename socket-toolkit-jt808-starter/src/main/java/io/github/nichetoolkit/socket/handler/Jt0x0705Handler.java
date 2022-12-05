@@ -33,6 +33,6 @@ public class Jt0x0705Handler implements SocketPackageHandler {
             Jt808CanData jt808CanData = AnalyzeUtils.analyzeCan(messageBodyBytes);
             dataService.canData(phone, jt808CanData);
         });
-        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0);
+        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte) 0);
     }
 }

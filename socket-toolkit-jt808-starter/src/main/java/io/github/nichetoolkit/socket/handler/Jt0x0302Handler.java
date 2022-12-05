@@ -29,9 +29,9 @@ public class Jt0x0302Handler implements SocketPackageHandler {
         log.info("[Jt0x0302] 0302 [提问应答] question answer");
         /** 提问下发是有问答环节的 所以可以直接使用 saveSendCommand 直接查询并保存应答结果 */
         String phone = ByteHexUtils.parseHex(phoneBytes);
-        int answerStreamNumber = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes, 0, 2));
+        int answerStreamNumber = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes,0,2));
         threadPoolExecutor.execute(() ->
                 dataService.terminalAnswer(phone, answerStreamNumber, "8302", "0302", messageBodyBytes));
-        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x00);
+        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte)0x00);
     }
 }

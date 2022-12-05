@@ -24,13 +24,13 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         super.channelRegistered(ctx);
-        log.debug("session registered, name: {} ", ctx.name());
+        log.debug("session registered, name: {} ",ctx.name());
     }
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         super.channelUnregistered(ctx);
-        log.debug("session unregistered, name: {} ", ctx.name());
+        log.debug("session unregistered, name: {} ",ctx.name());
     }
 
     @Override
@@ -71,8 +71,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object message) throws Exception {
-        byte[] originData = (byte[]) message;
+        byte[] originData  = (byte[]) message;
         log.debug("name: {}, message: {}", ctx.name(), Arrays.toString(originData));
-        socketServerHandler.handle(ctx, message);
+        socketServerHandler.handle(ctx,message);
     }
 }

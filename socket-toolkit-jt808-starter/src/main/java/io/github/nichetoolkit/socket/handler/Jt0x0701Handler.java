@@ -28,10 +28,10 @@ public class Jt0x0701Handler implements SocketPackageHandler {
     public byte[] handle(byte[] phoneBytes, byte[] flowIdBytes, byte[] messageIdBytes, byte[] messageBodyBytes) {
         log.info("[Jt0x0700] 0701 [电子运单上报] electronic bill report");
         /** 保存电子运单数据 */
-        threadPoolExecutor.execute(() -> {
+        threadPoolExecutor.execute(()-> {
             String phone = ByteHexUtils.parseHex(phoneBytes);
-            dataService.eBill(phone, ByteHexUtils.subbyte(messageBodyBytes, 4));
+            dataService.eBill(phone, ByteHexUtils.subbyte(messageBodyBytes,4));
         });
-        return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 0x00);
+        return Jt808Utils.buildJt8001(phoneBytes,flowIdBytes,messageIdBytes,(byte)0x00);
     }
 }

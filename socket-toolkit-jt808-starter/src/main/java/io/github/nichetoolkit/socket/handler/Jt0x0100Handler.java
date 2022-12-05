@@ -40,7 +40,7 @@ public class Jt0x0100Handler implements SocketPackageHandler {
         if (phoneBytes.length == SocketJt808Constants.PHONE_2019_LENGTH) {
             version = SocketJt808Constants.VERSION_2019;
         } else {
-            if (messageBodyBytes.length > SocketJt808Constants.PHONE_2013_LENGTH) {
+            if(messageBodyBytes.length > SocketJt808Constants.PHONE_2013_LENGTH) {
                 version = SocketJt808Constants.VERSION_2013;
             } else {
                 version = SocketJt808Constants.VERSION_2011;
@@ -59,12 +59,12 @@ public class Jt0x0100Handler implements SocketPackageHandler {
         }
         if (version == SocketJt808Constants.VERSION_2019) {
             terminalType = ByteHexUtils.subbyte(messageBodyBytes, offset, offset += 30);
-        } else if (version == SocketJt808Constants.VERSION_2013) {
+        } else if(version == SocketJt808Constants.VERSION_2013){
             terminalType = ByteHexUtils.subbyte(messageBodyBytes, offset, offset += 20);
         } else {
             terminalType = ByteHexUtils.subbyte(messageBodyBytes, offset, offset += 8);
         }
-        if (version == SocketJt808Constants.VERSION_2019) {
+        if(version == SocketJt808Constants.VERSION_2019){
             terminalId = ByteHexUtils.subbyte(messageBodyBytes, offset, offset += 30);
         } else {
             terminalId = ByteHexUtils.subbyte(messageBodyBytes, offset, offset += 7);
@@ -73,7 +73,7 @@ public class Jt0x0100Handler implements SocketPackageHandler {
         license = ByteHexUtils.subbyte(messageBodyBytes, offset);
 
         /** 鉴权码需要在调用终端注册的时候自动生成 7 位数 */
-        Future<String> authFuture = threadPoolExecutor.submit(() -> {
+        Future<String> authFuture = threadPoolExecutor.submit(()->{
             /** 省域ID */
             int province = ByteHexUtils.parseTwoInt(provinceId);
             /** 市县域ID */
@@ -112,26 +112,26 @@ public class Jt0x0100Handler implements SocketPackageHandler {
         }
 
         /** 应答 */
-        if (auth == null) {
+        if(auth == null ){
             /** 数据库查询或者之类的出现了异常 直接回复平台失败应答 */
-            return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes, (byte) 1);
-        } else if (SocketJt808Constants.TERMINAL_REG_HAS_VEHICLE.equals(auth)) {
+            return Jt808Utils.buildJt8001(phoneBytes, flowIdBytes, messageIdBytes,(byte)1);
+        }else if(SocketJt808Constants.TERMINAL_REG_HAS_VEHICLE.equals(auth)){
             /** 车辆已经注册 */
-            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte) 1, auth);
-        } else if (SocketJt808Constants.TERMINAL_REG_NO_VEHICLE.equals(auth)) {
+            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte)1, auth);
+        }else if(SocketJt808Constants.TERMINAL_REG_NO_VEHICLE.equals(auth)){
             /** 不存在的车辆 */
-            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte) 2, auth);
-        } else if (SocketJt808Constants.TERMINAL_REG_HAS_TERMINAL.equals(auth)) {
+            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte)2, auth);
+        }else if(SocketJt808Constants.TERMINAL_REG_HAS_TERMINAL.equals(auth)){
             /** 终端已经注册 */
-            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte) 3, auth);
-        } else if (SocketJt808Constants.TERMINAL_REG_NO_TERMINAL.equals(auth)) {
+            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes,(byte)3, auth);
+        }else if(SocketJt808Constants.TERMINAL_REG_NO_TERMINAL.equals(auth)){
             /** 不存在的终端 */
-            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte) 4, auth);
-        } else {
+            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte)4, auth);
+        }else{
             /** 设置鉴权码 */
             cacheService.setAuth(phone, auth);
             /** 正常 */
-            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte) 0, auth);
+            return Jt808Utils.buildJt8100(phoneBytes, flowIdBytes, (byte)0, auth);
         }
     }
 }

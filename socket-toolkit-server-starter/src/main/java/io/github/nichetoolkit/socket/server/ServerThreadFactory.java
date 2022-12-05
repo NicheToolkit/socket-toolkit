@@ -1,7 +1,6 @@
 package io.github.nichetoolkit.socket.server;
 
 import org.springframework.lang.NonNull;
-
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,10 +24,10 @@ public class ServerThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(@NonNull Runnable runnable) {
         Thread thread = new Thread(group, runnable, prefix + THREAD_SEQUENCE.getAndIncrement(), 0);
-        if (thread.isDaemon()) {
+        if (thread.isDaemon()){
             thread.setDaemon(false);
         }
-        if (thread.getPriority() != Thread.NORM_PRIORITY) {
+        if (thread.getPriority() != Thread.NORM_PRIORITY){
             thread.setPriority(Thread.NORM_PRIORITY);
         }
         return thread;

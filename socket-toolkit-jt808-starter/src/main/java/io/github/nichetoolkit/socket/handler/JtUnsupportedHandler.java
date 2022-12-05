@@ -16,6 +16,6 @@ public class JtUnsupportedHandler extends UnsupportedHandler {
 
     @Override
     public byte[] commonAnswer(byte[] phone, byte[] flowId, byte[] messageId) {
-        return Jt808Utils.buildJt8001(phone, flowId, messageId, (byte) 3);
+        return Jt808Utils.buildJt8001(phone,flowId,messageId,(byte) 3);
     }
 }

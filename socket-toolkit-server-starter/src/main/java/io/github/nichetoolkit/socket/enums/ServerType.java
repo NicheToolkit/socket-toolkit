@@ -12,9 +12,10 @@ import java.util.Optional;
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */
-public enum ServerType implements RestValue<String, String> {
-    NETTY("netty", "netty-server"),
-    MINA("mina", "mina-server");
+public enum ServerType implements RestValue<String,String> {
+    NETTY("netty","netty-server"),
+    MINA("mina","mina-server")
+    ;
 
     private final String key;
     private final String value;

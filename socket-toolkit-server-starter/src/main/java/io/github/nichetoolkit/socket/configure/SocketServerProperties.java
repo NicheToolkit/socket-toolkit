@@ -18,7 +18,7 @@ public class SocketServerProperties {
     private Boolean enabled = true;
     /** 服务器名称 */
     private String name = null;
-    /** 服务器监听端口 */
+    /** 服务器监听端口  */
     private Integer port = 9999;
     /** 服务器类型 */
     private ServerType serverType = ServerType.NETTY;
@@ -33,7 +33,7 @@ public class SocketServerProperties {
     /** 缓冲队列大小 */
     private Integer backlog = 128;
     /** 是否实时性 */
-    private Boolean tcpNoDelay = true;
+    private Boolean tcpNoDelay= true;
     /** 保持长连接 */
     private Boolean keepalive = true;
 

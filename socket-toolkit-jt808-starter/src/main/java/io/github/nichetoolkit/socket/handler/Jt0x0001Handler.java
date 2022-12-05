@@ -45,9 +45,9 @@ public class Jt0x0001Handler implements SocketPackageHandler {
         log.info("[Jt0x0001] 0001 [终端通用应答] terminal answer");
         threadPoolExecutor.execute(() -> {
             /** 对应平台消息流水号 */
-            int flowId = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes, 0, 2));
+            int flowId = ByteHexUtils.parseTwoInt(ByteHexUtils.subbyte(messageBodyBytes,0,2));
             /** 平台消息ID */
-            String commandId = ByteHexUtils.parseHex(ByteHexUtils.subbyte(messageBodyBytes, 2, 4));
+            String commandId = ByteHexUtils.parseHex(ByteHexUtils.subbyte(messageBodyBytes,2,4));
             /** 终端对应电话号码 */
             String phone = ByteHexUtils.parseHex(phoneBytes);
             /** 消息ID */

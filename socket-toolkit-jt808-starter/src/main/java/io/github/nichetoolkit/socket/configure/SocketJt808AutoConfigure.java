@@ -43,7 +43,7 @@ public class SocketJt808AutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean(Jt808CacheService.class)
-    public Jt808CacheService defaultJt808CacheService(SocketJt808Properties jt808Properties) {
+    public Jt808CacheService defaultJt808CacheService(SocketJt808Properties jt808Properties){
         log.debug("use default jt808 cache service bean.");
         return new Jt808DefaultCacheService(jt808Properties);
     }
@@ -51,7 +51,7 @@ public class SocketJt808AutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean(SocketMessageHandler.class)
-    public SocketMessageHandler jt808MessageHandler() {
+    public SocketMessageHandler jt808MessageHandler(){
         log.debug("use default jt808 message handler bean.");
         return new Jt808MessageHandler();
     }
