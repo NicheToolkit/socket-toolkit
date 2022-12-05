@@ -15,5 +15,4 @@ import java.lang.annotation.*;
 @Component
 public @interface SocketPackage {
     int messageId();
-
 }

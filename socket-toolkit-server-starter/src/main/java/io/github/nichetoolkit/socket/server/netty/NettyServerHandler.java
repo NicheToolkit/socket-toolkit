@@ -14,7 +14,6 @@ import java.util.Arrays;
  * @version v1.0.0
  */
 @Slf4j
-@ChannelHandler.Sharable
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     private SocketServerHandler socketServerHandler;

@@ -1,4 +1,3 @@
-
 package io.github.nichetoolkit.socket.handler;
 
 import io.github.nichetoolkit.socket.server.SocketPackage;

@@ -3,7 +3,7 @@ package io.github.nichetoolkit.socket.server.handler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * <p>JTUnsupportedHandler</p>
+ * <p>UnsupportedHandler</p>
  * @author Cyan (snow22314@outlook.com)
  * @version v.1.0
  */

@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * <p>NettyThreadFactory</p>
+ * <p>ServerThreadFactory</p>
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */

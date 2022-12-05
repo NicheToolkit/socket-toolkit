@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * <p>EnableNettyServer</p>
+ * <p>EnableSocketServer</p>
  * @author Cyan (snow22314@outlook.com)
  * @version v1.0.0
  */
