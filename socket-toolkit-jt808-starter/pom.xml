@@ -5,11 +5,11 @@
     <parent>
         <groupId>io.github.nichetoolkit</groupId>
         <artifactId>socket-toolkit-parent</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.0.2</version>
     </parent>
 
     <artifactId>socket-toolkit-jt808-starter</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>socket-toolkit-jt808-starter</name>
     <packaging>jar</packaging>
     <description>Socket toolkit jt808 starter project for Spring Boot</description>

@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>socket-toolkit-parent</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <modules>
         <module>socket-toolkit-server-starter</module>
@@ -59,7 +59,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netty.version>4.1.72.Final</netty.version>
         <mina.version>2.1.5</mina.version>
-        <socket-toolkit.version>1.0.2-SNAPSHOT</socket-toolkit.version>
+        <socket-toolkit.version>1.0.2</socket-toolkit.version>
     </properties>
 
     <build>
