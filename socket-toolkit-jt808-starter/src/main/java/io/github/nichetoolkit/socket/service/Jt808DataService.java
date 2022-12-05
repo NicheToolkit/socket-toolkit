@@ -1,9 +1,6 @@
 package io.github.nichetoolkit.socket.service;
 
-import io.github.nichetoolkit.rest.util.GeneralUtils;
-import io.github.nichetoolkit.socket.constant.SocketJt808Constants;
 import io.github.nichetoolkit.socket.model.*;
-import org.springframework.beans.factory.InitializingBean;
 
 /**
  * <p>Jt808Service</p>
