@@ -42,7 +42,7 @@
 -  [Sonatype Central Repository](https://central.sonatype.dev/search?q=io.github.nichetoolkit)
 
 ## 依赖环境
- > [Spring Boot](https://spring.io/projects/spring-boot) 2.6.6..RELEASE\
+ > [Spring Boot](https://spring.io/projects/spring-boot) 2.6.6.RELEASE\
  > [Maven](https://maven.apache.org/) 3.6.0+\
  > [JDK](https://www.oracle.com/java/technologies/downloads/#java8) 1.8
  
