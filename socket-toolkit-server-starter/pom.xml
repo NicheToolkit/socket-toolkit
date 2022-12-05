@@ -62,7 +62,7 @@
         <dependency>
             <groupId>io.github.nichetoolkit</groupId>
             <artifactId>rest-toolkit-starter</artifactId>
-            <version>${toolkit.version}</version>
+            <version>${rest-toolkit.version}</version>
         </dependency>
 
         <dependency>

@@ -1,6 +1,7 @@
 package io.github.nichetoolkit.socket.server.netty;
 
 import io.github.nichetoolkit.socket.server.handler.SocketServerHandler;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import java.util.Arrays;
  * @version v1.0.0
  */
 @Slf4j
+@ChannelHandler.Sharable
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     private SocketServerHandler socketServerHandler;

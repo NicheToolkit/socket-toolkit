@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.github.nichetoolkit</groupId>
         <artifactId>rest-toolkit-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.0.5</version>
     </parent>
 
     <artifactId>socket-toolkit-parent</artifactId>
@@ -14,7 +14,7 @@
     <modules>
         <module>socket-toolkit-server-starter</module>
         <module>socket-toolkit-jt808-starter</module>
-        <module>socket-toolkit-test-web</module>
+        <!--<module>socket-toolkit-test-web</module>-->
     </modules>
 
     <name>socket-toolkit</name>
@@ -59,7 +59,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <netty.version>4.1.72.Final</netty.version>
         <mina.version>2.1.5</mina.version>
-        <socket.version>1.0.2-SNAPSHOT</socket.version>
+        <socket-toolkit.version>1.0.2-SNAPSHOT</socket-toolkit.version>
     </properties>
 
     <build>

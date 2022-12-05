@@ -61,7 +61,7 @@
         <dependency>
             <groupId>io.github.nichetoolkit</groupId>
             <artifactId>socket-toolkit-server-starter</artifactId>
-            <version>${socket.version}</version>
+            <version>${socket-toolkit.version}</version>
         </dependency>
 
     </dependencies>

@@ -1,10 +1,8 @@
 package io.github.nichetoolkit.socket.configure;
 
-import io.github.nichetoolkit.rest.util.JsonUtils;
 import io.github.nichetoolkit.socket.codec.MessageCoder;
 import io.github.nichetoolkit.socket.codec.SocketJt808MessageCoder;
 import io.github.nichetoolkit.socket.manager.Jt808MessageHandler;
-import io.github.nichetoolkit.socket.model.Jt808Location;
 import io.github.nichetoolkit.socket.server.handler.SocketMessageHandler;
 import io.github.nichetoolkit.socket.service.Jt808CacheService;
 import io.github.nichetoolkit.socket.service.Jt808DataService;
@@ -43,7 +41,7 @@ public class SocketJt808AutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean(Jt808CacheService.class)
-    public Jt808CacheService defaultJt808CacheService(SocketJt808Properties jt808Properties){
+    public Jt808CacheService defaultJt808CacheService(SocketJt808Properties jt808Properties) {
         log.debug("use default jt808 cache service bean.");
         return new Jt808DefaultCacheService(jt808Properties);
     }
@@ -51,7 +49,7 @@ public class SocketJt808AutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean(SocketMessageHandler.class)
-    public SocketMessageHandler jt808MessageHandler(){
+    public SocketMessageHandler jt808MessageHandler() {
         log.debug("use default jt808 message handler bean.");
         return new Jt808MessageHandler();
     }

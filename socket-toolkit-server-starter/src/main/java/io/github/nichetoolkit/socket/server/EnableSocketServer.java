@@ -1,6 +1,5 @@
 package io.github.nichetoolkit.socket.server;
 
-import io.github.nichetoolkit.socket.configure.SocketServerProperties;
 import io.github.nichetoolkit.socket.configure.SocketServerStarterConfigure;
 import org.springframework.context.annotation.Import;
 

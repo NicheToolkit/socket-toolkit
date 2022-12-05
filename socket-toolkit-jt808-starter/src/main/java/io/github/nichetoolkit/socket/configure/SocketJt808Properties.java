@@ -14,7 +14,7 @@ public class SocketJt808Properties {
     /** 是否鉴权 */
     private Boolean auth = true;
     /** 鉴权消息Id */
-    private String[] authIds = new String[]{"0102","0100"};
+    private String[] authIds = new String[]{"0102", "0100"};
 
     private Boolean useConstantAuth = false;
 

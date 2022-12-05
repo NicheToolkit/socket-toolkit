@@ -1,6 +1,5 @@
 package io.github.nichetoolkit.socket.codec;
 
-import io.netty.channel.ChannelHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;

@@ -38,12 +38,12 @@ public enum ServerType implements RestValue<String,String> {
 
     @JsonCreator
     public static ServerType parserKey(@NonNull String key) {
-        ServerType typeEnum = RestValue.parserKey(ServerType.class, key);
+        ServerType typeEnum = RestValue.parseKey(ServerType.class, key);
         return Optional.ofNullable(typeEnum).orElse(ServerType.NETTY);
     }
 
     public static ServerType parserValue(@NonNull String value) {
-        ServerType typeEnum = RestValue.parserValue(ServerType.class, value);
+        ServerType typeEnum = RestValue.parseValue(ServerType.class, value);
         return Optional.ofNullable(typeEnum).orElse(ServerType.NETTY);
     }
 

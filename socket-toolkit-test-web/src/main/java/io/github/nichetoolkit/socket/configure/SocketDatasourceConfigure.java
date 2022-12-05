@@ -20,8 +20,6 @@
 // * <p>NoticeDatasourceConfigure</p>
 // * @author Cyan (snow22314@outlook.com)
 // * @version v.1.0
-// * @company 郑州高维空间技术有限公司(c) 2021-2022
-// * @date created on 17:24 2021/9/9
 // */
 //@Configuration
 //@EnableTransactionManagement
