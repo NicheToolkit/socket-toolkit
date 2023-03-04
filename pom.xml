@@ -2,12 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>io.github.nichetoolkit</groupId>
-        <artifactId>rest-toolkit-parent</artifactId>
-        <version>1.0.5</version>
-    </parent>
-
+    <groupId>io.github.nichetoolkit</groupId>
     <artifactId>socket-toolkit-parent</artifactId>
     <version>1.0.2</version>
 
@@ -42,6 +37,13 @@
         <url>git@github.com:NicheToolkit/socket-toolkit.git</url>
     </scm>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <distributionManagement>
         <snapshotRepository>
             <id>sonatype-nexus-snapshot</id>
@@ -53,13 +55,75 @@
         </repository>
     </distributionManagement>
 
+    <repositories>
+
+        <repository>
+            <id>sonatype-nexus-central</id>
+            <name>sonatype maven centrals</name>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>sonatype-nexus-release</id>
+            <name>sonatype maven releases</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>sonatype-nexus-snapshot</id>
+            <name>sonatype maven snapshots</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
     <properties>
         <java.version>1.8</java.version>
+        <jdk.version>1.8</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-boot.version>2.6.6</spring-boot.version>
+        <rest-toolkit.version>1.0.5</rest-toolkit.version>
+        <socket-toolkit.version>1.0.2</socket-toolkit.version>
+
+        <commons-io.version>2.11.0</commons-io.version>
+        <source-plugin.version>2.2.1</source-plugin.version>
+        <javadoc-plugin.version>2.9.1</javadoc-plugin.version>
+        <gpg-plugin.version>1.5</gpg-plugin.version>
+        <nexus-staging-plugin.version>1.6.7</nexus-staging-plugin.version>
+        <compiler-plugin.version>3.3</compiler-plugin.version>
+        <release-plugin.version>2.5.3</release-plugin.version>
+
         <netty.version>4.1.72.Final</netty.version>
         <mina.version>2.1.5</mina.version>
-        <socket-toolkit.version>1.0.2</socket-toolkit.version>
+
     </properties>
 
     <build>
